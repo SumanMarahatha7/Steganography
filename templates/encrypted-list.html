@@ -1,0 +1,39 @@
+<div class="h-full w-3/5 bg-gray-200 flex flex-col px-10 py-20">
+
+    <div class="grid grid-flow-row grid-cols-4 grid-rows-2 gap-10">
+
+        {% for object in objects %}
+            <a href="decrypt/{{ object.id }}">
+                <div class="h-56 w-40 bg-teal-400 hover:bg-teal-600 rounded-lg flex justify-center items-center font-bold text-white">{{ object.caption }}</div>
+            </a>
+        {% endfor %}
+
+    </div>
+
+    {% if objects.has_other_pages %}
+      <ul class="flex w-full justify-center font-bold mt-10">
+
+        {% if objects.has_previous %}
+          <a href="?page={{ objects.previous_page_number }}"><li class="bg-teal-400 hover:bg-teal-600 w-10 text-center rounded mr-2">&laquo;</li></a>
+        {% else %}
+          <li class="bg-gray-500 w-10 text-center rounded mr-2"><span>&laquo;</span></li>
+        {% endif %}
+
+        {% for i in objects.paginator.page_range %}
+          {% if objects.number == i %}
+            <li class="border border-teal-500 w-10 text-center rounded mx-2"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+          {% else %}
+            <a href="?page={{ i }}"><li class="border border-gray-400 hover:bg-gray-400 w-10 text-center rounded mx-2">{{ i }}</li></a>
+          {% endif %}
+        {% endfor %}
+
+        {% if objects.has_next %}
+          <a href="?page={{ objects.next_page_number }}"><li class="bg-teal-400 hover:bg-teal-600 w-10 text-center rounded ml-2">&raquo;</li></a>
+        {% else %}
+          <li class="bg-gray-500 w-10 text-center rounded ml-2"><span>&raquo;</span></li>
+        {% endif %}
+
+      </ul>
+    {% endif %}
+
+</div>

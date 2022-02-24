@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} | Login Account {% endblock %}
+{% load static %}
+{% block main %}
+
+  <center><h1 style="margin-top: 45px;">Login</h1></center>
+  <section id="login" style="margin-top: 70px;">
+  <form action="{% url 'login' %}" method="POST" style="width: 40%; position: absolute; left: 30%; font-size: 20px; ">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">User Name</label>
+    <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter User name" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" name="password" id="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+  </div>
+  <button type="submit" value="Login" class="btn btn-primary">Submit</button><hr>
+  <center><div class="form-group">
+    <p>Not a Member? <button class="btn btn-primary" onclick="window.location.href = '{% url 'register' %}';">Register</button></p>
+    </div>
+  </center>
+</form>
+  </section>
+
+
+
+
+{% endblock %}

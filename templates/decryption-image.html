@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <div class="w-full h-full bg-gray-200 flex items-center box-border pt-12">
+
+        <div class="w-2/3 h-full flex items-center flex-col">
+        <h2 class="font-bold text-gray-600 text-2xl mb-5">Image Decrypted : : {{ caption }}</h2>
+        <img style="height: 550px" src="/{{ image }}"/>
+        </div>
+
+        <div class="w-1/3 h-full flex items-center flex-col">
+        <h2 class="font-bold text-gray-600 text-2xl mb-5">Secret Message</h2>
+        <p>{{ msg }}</p>
+        </div>
+    </div>
+
+{% endblock %}

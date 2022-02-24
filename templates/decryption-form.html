@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <div class="w-full h-full bg-gray-200 flex flex-col items-center justify-center box-border">
+
+        <h2 class="font-bold text-gray-600 text-2xl mb-10">Image to Decrypt : : {{ caption }}</h2>
+        <form method="post" class="h-32 flex flex-col w-full justify-around items-center">
+            {% csrf_token %}
+            {% if error %} <p class="text-red-600">{{ error }}</p> {% endif %}
+            <input autofocus type="password" name="key" class="h-12 transition ease-in-out duration-500 bg-gray-200 pl-4 border-b-4 transform w-6/12 focus:-translate-y-0 focus:scale-110 focus:bg-gray-100 focus:border-teal-400 {% if error %} border-red-600 {% else %} border-gray-500 {% endif %}" placeholder="Enter key to decrypt" value="{{ key }}"/>
+            <button type="submit" class="bg-teal-500 hover:bg-teal-600 text-white font-bold rounded-lg mt-5 px-10 py-3">Decrypt</button>
+        </form>
+
+    </div>
+
+{% endblock %}

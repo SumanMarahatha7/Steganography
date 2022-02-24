@@ -1,0 +1,25 @@
+<div class="navbar fixed-top navbar-dark bg-dark" style="position: fixed;">
+    <div style="font-size: 28px; margin-left: 100px; color: white;">Image Encryption & Decryption</div>
+    {% if user.is_authenticated %}
+    <a style="color: white; margin-left: auto; margin-right: 25px;" class="btn btn-primary" id="dashboard" href="{% url 'index' %}">{{user.username}}(Dashboard)</a>
+    {% endif %}
+    <div class="dropdown show" style="margin-right: 20px;">
+    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    More
+    </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="color: black; font-weight: bolder;">
+                    {% if user.is_authenticated %}
+                    <a href="javascript:{document.getElementById('logout').submit()}" class="dropdown-item">
+                    <i class="logging-out"></i> Logout</a>
+                    <form action="{% url 'logout' %}" method="POST" id="logout">
+                    {% csrf_token %}
+                    <input type="hidden">
+                    </form>
+                    {% else %}
+                    <a href="{% url 'register' %}" class="dropdown-item" id="register">Register</a> <hr>
+                    <a href="{% url 'login' %}" class="dropdown-item" id="login"><button>Login</button></a>
+                    {% endif %}
+  </div>
+</div>
+</div>

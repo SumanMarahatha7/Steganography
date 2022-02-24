@@ -1,0 +1,35 @@
+<div class="h-full w-2/5 flex bg-white justify-center items-center lg:px-20 py-20 md:px-5">
+
+    <form class="h-full w-full flex flex-col justify-around items-center" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="w-full flex flex-col items-center justify-center">
+            {% if caption_error %} <p class="text-red-600">{{ caption_error }}</p> {% endif %}
+            <input autofocus class="h-12 w-11/12 placeholder-gray-700 bg-white pl-4 border-b-4 focus:bg-gray-100 focus:border-teal-400 {% if caption_error %} border-red-600 {% else %} border-gray-500 {% endif %}" type="text" name="caption" placeholder="Enter Caption" value="{{ caption }}" />
+        </div>
+
+        <div class="w-full flex flex-col items-center justify-center">
+            {% if key1_error %} <p class="text-red-600">{{ key1_error }}</p> {% endif %}
+            <input class="h-12 w-11/12 placeholder-gray-700 bg-white pl-4 border-b-4 focus:bg-gray-100 focus:border-teal-400 {% if key1_error %} border-red-600 {% else %} border-gray-500 {% endif %}" type="password" name="key1" placeholder="Enter Key" value="{{ key1 }}"/>
+        </div>
+
+        <div class="w-full flex flex-col items-center justify-center">
+            {% if key2_error %} <p class="text-red-600">{{ key2_error }}</p> {% endif %}
+            <input class="h-12 w-11/12 placeholder-gray-700 bg-white pl-4 border-b-4 focus:bg-gray-100 focus:border-teal-400 {% if key2_error %} border-red-600 {% else %} border-gray-500 {% endif %}" type="password" name="key2" placeholder="Confirm Key"/>
+        </div>
+
+        <div class="w-full flex flex-col items-center justify-center">
+            {% if msg_error %} <p class="text-red-600">{{ msg_error }}</p> {% endif %}
+            <input class="h-12 w-11/12 placeholder-gray-700 bg-white pl-4 border-b-4 focus:bg-gray-100 focus:border-teal-400 {% if msg_error %} border-red-600 {% else %} border-gray-500 {% endif %}" name="msg" placeholder="Text to encrypt"/>
+        </div>
+
+        <div class="w-full flex flex-col items-center justify-center">
+            {% if image_error %} <p class="text-red-600">{{ image_error }}</p> {% endif %}
+            <input type="file" name="image" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Encrypt</button>
+
+    </form>
+
+</div>
